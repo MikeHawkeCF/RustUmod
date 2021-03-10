@@ -1,4 +1,4 @@
-FROM quay.io/parkervcp/pterodactyl-images:base_debian
+FROM ubuntu:18.04
 
 LABEL       author="Mike Hawke" maintainer="Mike@MikeHawke.co.uk"
 
