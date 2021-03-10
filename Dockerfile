@@ -10,7 +10,13 @@ RUN apt update -y \
     && wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && apt update -y \  
-    && apt install -y dotnet-sdk-5.0 aspnetcore-runtime-5.0 libgdiplus
+    && apt install -y dotnet-sdk-5.0 aspnetcore-runtime-5.0 libgdiplus \
+    && apt install -y lib32gcc1 lib32stdc++6 unzip curl iproute2 libgdiplus \
+    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+    && apt install -y nodejs npm \
+    && mkdir /node_modules \
+    && npm install --prefix / ws \
+    && useradd -d /home/container -m container
 
 USER    container
 RUN ln -s /home/container/ /nonexistent
