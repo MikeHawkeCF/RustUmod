@@ -12,7 +12,6 @@ echo ":/home/container$ ${MODIFIED_STARTUP}"
     echo "Updating uMod..."
     umod update -P
     echo "Done updating uMod!"
-fi
 
 # Fix for Rust not starting
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)
