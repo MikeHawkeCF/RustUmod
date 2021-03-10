@@ -11,6 +11,7 @@ RUN apt update -y \
     && apt install -y nodejs npm \
     && mkdir /node_modules \
     && npm install --prefix / ws \
+    && useradd -d /home/container -m container \
     && apt update -y \ 
     && apt install -y wget sudo curl tar zip unzip sed apt-utils ca-certificates \
     && wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
@@ -18,9 +19,9 @@ RUN apt update -y \
     && apt update -y \  
     && apt install -y dotnet-sdk-5.0 aspnetcore-runtime-5.0 libgdiplus
 
-USER    container
+USER container
+ENV  USER=container HOME=/home/container
 RUN ln -s /home/container/ /nonexistent
-ENV USER=container HOME=/home/container
 
 RUN dotnet tool update uMod --version "*-*" --global --add-source https://www.myget.org/f/umod/api/v3/index.json
 RUN dotnet new -i "uMod.Templates::*-*" --nuget-source https://www.myget.org/f/umod/api/v3/index.json &>/dev/null
