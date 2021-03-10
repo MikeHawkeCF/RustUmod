@@ -11,7 +11,6 @@ RUN apt update -y \
     && apt install -y nodejs npm \
     && mkdir /node_modules \
     && npm install --prefix / ws \
-    && useradd -d /home/container -m container \
     && apt update -y \ 
     && apt install -y wget sudo curl tar zip unzip sed apt-utils ca-certificates \
     && wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
