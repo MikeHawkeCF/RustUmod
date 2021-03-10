@@ -10,8 +10,6 @@ RUN apt update -y \
     && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt install -y nodejs npm \
     && mkdir /node_modules \
-    && npm install --prefix / bufferutil \
-    && npm install --prefix / utf-8-validate \
     && npm install --prefix / ws \
     && apt update -y \ 
     && apt install -y wget sudo curl tar zip unzip sed apt-utils ca-certificates \
@@ -36,7 +34,6 @@ RUN export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
 
 WORKDIR /home/container
 
-COPY ./entrypoint.sh /entrypoint.sh
 COPY ./wrapper.js /wrapper.js
 
 COPY ./entrypoint.sh /entrypoint.sh
