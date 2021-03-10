@@ -21,7 +21,7 @@ RUN apt update -y \
 
 USER container
 ENV  USER=container HOME=/home/container
-RUN ln -s /home/container/ /nonexistent
+#RUN ln -s /home/container/ /nonexistent
 
 RUN dotnet tool update uMod --version "*-*" --global --add-source https://www.myget.org/f/umod/api/v3/index.json
 RUN dotnet new -i "uMod.Templates::*-*" --nuget-source https://www.myget.org/f/umod/api/v3/index.json &>/dev/null
